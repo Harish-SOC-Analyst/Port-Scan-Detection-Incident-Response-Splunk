@@ -1,1 +1,4 @@
-
+index=firewall
+| stats dc(dest_port) as dest_ports values(dest_port) by src_ip 
+| where dest_ports > 10
+| sort -dest_ports
